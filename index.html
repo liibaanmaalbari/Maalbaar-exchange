@@ -1,14 +1,46 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="so">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Maalbaari Exchange</title>
+  <style>
+    body { font-family: sans-serif; background: #f8fafc; margin: 0; padding: 20px; text-align: center; }
+    .box { background: white; padding: 20px; border-radius: 10px; max-width: 400px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    select, input, button { width: 100%; padding: 10px; margin: 10px 0; border-radius: 8px; border: 1px solid #ccc; }
+    .ussd-box { background: #e0f7fa; padding: 15px; border-radius: 8px; margin-top: 10px; }
+  </style>
 </head>
 <body>
-  <h1>Welcome to Maalbaari Exchange</h1>
-  <p>Fast and reliable MoneyGo to Zaad/eDahab exchange service.</p>
-  <a href="exchange.html">Start Exchange</a>
+  <div class="box">
+    <h2>Maalbaari Exchange</h2>
+    <label>Dooro Adeeg:</label>
+    <select id="service">
+      <option value="zaad">MoneyGo ➜ Zaad</option>
+      <option value="edahab">MoneyGo ➜ eDahab</option>
+    </select>
+
+    <label>Lacagta aad rabto in laguu diro:</label>
+    <input type="number" id="amount" placeholder="Tusaale: 1000" />
+
+    <button onclick="generateUSSD()">Soo saar Habka Dirista</button>
+
+    <div class="ussd-box" id="ussdDisplay" style="display:none;"></div>
+  </div>
+
+  <script>
+    function generateUSSD() {
+      const service = document.getElementById('service').value;
+      const amount = document.getElementById('amount').value;
+      const ussd = service === 'zaad'
+        ? `*880*0634500408*${amount}#`
+        : `*880*654500408*${amount}#`;
+
+      const ussdDisplay = document.getElementById('ussdDisplay');
+      ussdDisplay.innerHTML = `Wac lambarkan si aad u dirtid lacagta: <br><strong>${ussd}</strong><br/><small>Ka dib gali PIN-kaaga si aad u xaqiijiso</small>`;
+      ussdDisplay.style.display = 'block';
+    }
+  </script>
 </body>
 </html>
