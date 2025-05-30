@@ -1,1 +1,25 @@
-<!-- Confirmation page with reference ID -->
+<!DOCTYPE html>
+<html lang="so">
+<head>
+  <meta charset="UTF-8">
+  <title>Xaqiiji</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Macluumaadka Xaqiiji</h2>
+    <p id="message"></p>
+    <p><strong>Reference ID:</strong> <span id="ref"></span></p>
+    <a href="index.html">⬅️ Ku laabo</a>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const number = params.get("number");
+    const amount = params.get("amount");
+    const service = params.get("service");
+    const code = service === "zaad" ? `*880*${number}*${amount}#` : `*110*${number}*${amount}#`;
+    document.getElementById("message").textContent = `Fadlan wac codekan: ${code}`;
+    document.getElementById("ref").textContent = Math.floor(Math.random() * 1000000);
+  </script>
+</body>
+</html>
