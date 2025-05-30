@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<maalbaari_rates xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:noNamespaceSchemaLocation="https://bestchange.gitlab.io/parser-docs-public/schema/1.0.xsd">
+<item>
+<from>MoneyGo</from>
+<to>MAALBAARI-ZAAD</to>
+<in>1000</in>
+<out>1</out>
+<minamount>10 USD</minamount>
+<maxamount>10000 USD</maxamount>
+<param>manual</param>
+<note>Fadlan u dir lacagta: ×880×634500408×lacagt#</note>
+</item>
+<item>
+<from>MoneyGo</from>
+<to>MAALBAARI-EDAHAP</to>
+<in>1000</in>
+<out>1</out>
+<minamount>10 USD</minamount>
+<maxamount>10000 USD</maxamount>
+<param>manual</param>
+<note>Fadlan u dir lacagta: ×110×654500408×lacagt#</note>
+</item>
+</maalbaari_rates>
