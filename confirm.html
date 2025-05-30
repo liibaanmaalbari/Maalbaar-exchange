@@ -1,31 +1,62 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="so">
 <head>
-  <title>Xaqiiji Macluumaadka</title>
-  <script>
-    function getQueryParam(name) {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get(name);
-    }
-
-    window.onload = function() {
-      const service = getQueryParam("service");
-      const amount = getQueryParam("amount");
-      let code = "";
-
-      if (service === "ZAAD") {
-        code = "*880*634500408*" + amount + "#";
-      } else if (service === "EDAHAB") {
-        code = "*110*634500408*" + amount + "#";
-      }
-
-      document.getElementById("output").innerText = "Fadlan wac codekan: " + code;
-    };
-  </script>
+    <meta charset="UTF-8" />
+    <title>Xaqiiji Macluumaadka</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F4F8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h2 {
+            color: #0B3D91;
+        }
+        p {
+            font-size: 1.1rem;
+            color: #333;
+        }
+        .code {
+            margin: 1rem 0;
+            padding: 1rem;
+            background-color: #e0f7fa;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            color: #00796b;
+        }
+    </style>
 </head>
 <body>
-  <h2>Macluumaadka Xaqiiji</h2>
-  <p id="output"></p>
+    <div class="card">
+        <h2>Macluumaadka Xaqiiji</h2>
+        <div class="code" id="ussd-code">Fadlan sug...</div>
+        <p>Ka dib gali PIN-kaaga si aad u xaqiijiso.</p>
+    </div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const service = urlParams.get("service");
+        const number = urlParams.get("number");
+        const amount = urlParams.get("amount");
+
+        let code = "";
+        if (service === "zaad") {
+            code = `*880*${number}*${amount}#`;
+        } else if (service === "edahab") {
+            code = `*110*${number}*${amount}#`;
+        }
+
+        document.getElementById("ussd-code").textContent = `Wac lambarkan si aad u dirto lacagta: ${code}`;
+    </script>
 </body>
 </html>
