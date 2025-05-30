@@ -1,67 +1,31 @@
 
 <!DOCTYPE html>
-<html lang="so">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Caddeyn Diris</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background: #f4f4f4;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
+  <title>Xaqiiji Macluumaadka</title>
+  <script>
+    function getQueryParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
     }
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 90%;
-      max-width: 400px;
-      text-align: center;
-    }
-    .code-box {
-      background: #e0f7fa;
-      padding: 15px;
-      margin-top: 20px;
-      border-radius: 5px;
-      font-weight: bold;
-    }
-    button {
-      margin-top: 10px;
-      background: #28a745;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 5px;
-    }
-  </style>
+
+    window.onload = function() {
+      const service = getQueryParam("service");
+      const amount = getQueryParam("amount");
+      let code = "";
+
+      if (service === "ZAAD") {
+        code = "*880*634500408*" + amount + "#";
+      } else if (service === "EDAHAB") {
+        code = "*110*634500408*" + amount + "#";
+      }
+
+      document.getElementById("output").innerText = "Fadlan wac codekan: " + code;
+    };
+  </script>
 </head>
 <body>
-  <div class="card">
-    <h2>Habka Dirista</h2>
-    <div class="code-box" id="codeBox">Loading...</div>
-    <button onclick="copyCode()">Copy Code-ka</button>
-    <p>Ka dib gali PIN-kaaga si aad u xaqiijiso.</p>
-  </div>
-
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const method = params.get('method');
-    const number = params.get('number');
-    const amount = params.get('amount');
-    const code = `*880*${number}*${amount}#`;
-    document.getElementById("codeBox").innerText = `Wac lambarkan si aad u dirto lacagta:\n${code}`;
-
-    function copyCode() {
-      navigator.clipboard.writeText(code)
-        .then(() => alert("Code-ka waa la koobiyey"))
-        .catch(() => alert("Copy-gii wuu guuldareystay"));
-    }
-  </script>
+  <h2>Macluumaadka Xaqiiji</h2>
+  <p id="output"></p>
 </body>
 </html>

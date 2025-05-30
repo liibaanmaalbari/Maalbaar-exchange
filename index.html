@@ -1,70 +1,20 @@
 
 <!DOCTYPE html>
-<html lang="so">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Maalbaari Exchange</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background: #f4f4f4;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-    }
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 90%;
-      max-width: 400px;
-      text-align: center;
-    }
-    input, select, button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      font-size: 16px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    button {
-      background: #0066cc;
-      color: white;
-      border: none;
-    }
-  </style>
 </head>
 <body>
-  <div class="card">
-    <h2>Maalbaari Exchange</h2>
-    <select id="method">
-      <option value="Zaad">MoneyGo ➔ Zaad</option>
-      <option value="eDahab">MoneyGo ➔ eDahab</option>
-    </select>
-    <input type="text" id="number" placeholder="Lambarka (tusaale: 0634500408)" />
-    <input type="number" id="amount" placeholder="Lacagta (tusaale: 1000)" />
-    <button onclick="submitForm()">Soo saar Habka Dirista</button>
-  </div>
-
-  <script>
-    function submitForm() {
-      const method = document.getElementById("method").value;
-      const number = document.getElementById("number").value.trim();
-      const amount = document.getElementById("amount").value.trim();
-
-      if (!number || !amount) {
-        alert("Fadlan buuxi lambarka iyo lacagta.");
-        return;
-      }
-
-      const url = `confirm.html?method=${method}&number=${number}&amount=${amount}`;
-      window.location.href = url;
-    }
-  </script>
+  <h1>Maalbaari Exchange</h1>
+  <form action="confirm.html" method="get">
+    <label>Dooro Adeeg:</label><br>
+    <select name="service">
+      <option value="ZAAD">SAHAL</option>
+      <option value="EDAHAB">MAALBAARI-EDAHAB</option>
+    </select><br><br>
+    <label>Lacagta:</label><br>
+    <input type="number" name="amount" required><br><br>
+    <input type="submit" value="Gudbi">
+  </form>
 </body>
 </html>
