@@ -1,1 +1,0 @@
-// JavaScript for handling form, validation, and ID generation
