@@ -1,0 +1,32 @@
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0fff0;
+  color: #004d00;
+  padding: 20px;
+}
+h1, h2 {
+  color: #006600;
+}
+button {
+  background-color: #00b300;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+button:hover {
+  background-color: #009900;
+}
+.exchange-box, .rates-box, .faq {
+  background-color: #e6ffe6;
+  border: 1px solid #b3ffb3;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+footer {
+  margin-top: 40px;
+  font-size: 0.9em;
+  color: #006600;
+}
