@@ -1,28 +1,75 @@
-# Maalbaari Exchange
+<!DOCTYPE html><html lang="so">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maalbaari Exchange</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Maalbaari Exchange</h1>
+    <p>Bedel lacagaha MoneyGo, Zaad, iyo eDahab si toos ah</p>
+  </header>  <main>
+    <section class="exchange-box">
+      <h2>Foomka Bedelka</h2>
+      <form id="exchange-form">
+        <label for="service">Dooro Adeeg:</label>
+        <select id="service" name="service">
+          <option value="moneygo-zaad">MoneyGo ➔ Zaad</option>
+          <option value="moneygo-edahab">MoneyGo ➔ eDahab</option>
+        </select><label for="number">Lambarka:</label>
+    <input type="tel" id="number" name="number" placeholder="0634500408" required />
 
-This is the live frontend for maalbaari.com
+    <label for="amount">Lacagta:</label>
+    <input type="number" id="amount" name="amount" placeholder="1000" required />
 
-## Usage
+    <button type="submit">Soo Saar Habka Dirista</button>
+  </form>
 
-- Navigate to the website at [maalbaari.com](https://maalbaari.com)
-- Exchange MoneyGo to Zaad and eDahab automatically
-- View live exchange rates and transaction status
+  <div id="confirmation" style="display:none;"></div>
+</section>
 
-## Features
+<section class="rates-box">
+  <h2>Heerarka Sarrifka</h2>
+  <ul id="rates-list">
+    <li>1 MoneyGo ➔ Zaad = 880 SOS</li>
+    <li>1 MoneyGo ➔ eDahab = 110 SOS</li>
+  </ul>
+</section>
 
-- Multi-language support (Somali and English)
-- Automatic exchange between MoneyGo, Zaad, and eDahab
-- Reference ID tracking for transactions
-- Contact and FAQ page included
+<section class="faq">
+  <h2>FAQ - Su'aalaha Badan La Isweydiiyo</h2>
+  <details>
+    <summary>Sidee lacagta loo diraa?</summary>
+    <p>Waxaad geli lambarka, xulashada adeegga, iyo lacagta. Foomka ayaa ku siin doona code si aad u dirto.</p>
+  </details>
+  <details>
+    <summary>Imisa wakhti ayuu qaataa?</summary>
+    <p>Lacagta si toos ah ayaa u dhacda, haddii network-ka uusan jirin cilad.</p>
+  </details>
+</section>
 
-## How to deploy
+  </main>  <footer>
+    <p>&copy; 2025 Maalbaari Exchange | <a href="mailto:support@maalbaari.com">support@maalbaari.com</a></p>
+  </footer>  <script>
+    const form = document.getElementById("exchange-form");
+    const confirmation = document.getElementById("confirmation");
 
-1. Download all files from the repo.
-2. Upload files to your hosting or GitHub Pages.
-3. Set up DNS and domain as needed.
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const number = document.getElementById("number").value;
+      const amount = document.getElementById("amount").value;
+      const service = document.getElementById("service").value;
 
-For any issues, contact: support@maalbaari.com
+      let code = "";
+      if (service === "moneygo-zaad") {
+        code = `*110*634500408*${amount}#`;
+      } else if (service === "moneygo-edahab") {
+        code = `*110*654500408*${amount}#`;
+      }
 
----
-
-Created by Liibaan Maalbari
+      confirmation.style.display = "block";
+      confirmation.innerHTML = `<p>Fadlan wac codekan: <strong>${code}</strong></p>`;
+    });
+  </script></body>
+</html>
